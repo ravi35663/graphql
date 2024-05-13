@@ -1,1 +1,29 @@
 // Learning Graphql
+Graphql:
+    -> Graphql is a Query language
+    -> 
+        Query{
+            books{
+                title,
+                author,
+                price
+            }
+        }
+    -> Alternative to using  RESTApi
+    -> Graphql is good for fetching needed data .
+    -> Graphql provide nested query data
+        e.g. 
+            Query{
+                course(id:1){
+                    id,title,price
+                    author{
+                        name,
+                        id,
+                        courses{
+                            id,
+                            title,
+                            thumbnail
+                        }
+                    }
+                }
+            }
