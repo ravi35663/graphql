@@ -1,10 +1,11 @@
 import {ApolloServer} from '@apollo/server'
 import {startStandaloneServer} from '@apollo/server/standalone'
-
+import { typeDefs } from './schema';
 
 // server setup
 const server = new ApolloServer({
-    // typeDefs => which type of schema 
+    // typeDefs => which type of schema (definition of type of data like author have name,age ..etc)
+    typeDefs,
     // resolvers 
 });
 
