@@ -27,3 +27,4 @@ Graphql:
                     }
                 }
             }
+    -> if you want to fetch nested data from different resources then you have to connect them at the server.
