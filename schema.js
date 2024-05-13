@@ -1,3 +1,4 @@
+
 export const typeDefs = `#graphql
     type Game{
         id: ID!
