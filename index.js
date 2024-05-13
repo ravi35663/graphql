@@ -10,11 +10,20 @@ const resolvers = {
         reviews(){
             return _db.reviews
         },
+        review(parent,args){
+            return _db.reviews.find(review=> review.id === args.id)
+        },
         authors(){
             return _db.authors
         },
+        author(parent,args){
+            return _db.authors.find(author=> author.id == args.id)
+        },
         games(){
             return _db.games;
+        },
+        game(parent,args){
+            return _db.games.find(game=> game.id == args.id)
         }
     }
 }
