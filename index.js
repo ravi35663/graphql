@@ -87,6 +87,32 @@ const resolvers = {
             _db.games.push(game);
             return game
        }
+       /* this mutation for adding new game
+        mutation AddGameMutation($game: AddNewGameInput!){
+            addNewGame(game: $game) {
+                id,title,platform 
+            }
+        }
+       */
+      ,
+      editGame(parent,args){
+        let existingGame = _db.games.find(item=> item.id === args.id);
+        if(!existingGame){
+            throw new Error("Invalid game")
+        }
+        existingGame = {...existingGame,...args.game};
+        const index = _db.games.findIndex(item=> item.id === args.id);
+        _db.games[index] = existingGame;
+        return existingGame;
+      }
+      /*This mutation for above resolver
+        mutation UpdateGameMutation($id:ID!, $game:EditGameInput!){
+            editGame(id:$id,game:$game){
+                id,title
+            }
+        }
+      
+      */
     }
 }
 
