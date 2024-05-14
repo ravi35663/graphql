@@ -54,19 +54,40 @@ const resolvers = {
             return _db.games.find(g=> g.id === parent.game_id)
         }
     }
-    /* This query for the review resolver
-    query Review($id:ID!){
-        review(id:$id){
-            id,content
-            author {
-            name
-            },
-            game {
-            title,id
+        /* This query for the review resolver
+        query Review($id:ID!){
+            review(id:$id){
+                id,content
+                author {
+                name
+                },
+                game {
+                title,id
+                }
             }
+            } 
+        */
+    ,
+    Mutation:{
+        deleteGame(parent,args){
+            _db.games = _db.games.filter(g=> g.id !== args.id);
+            return _db.games;
         }
-        } 
-    */
+        /*
+            this mutation is for above resolver
+            mutation DeleteGame($id:ID!){
+                deleteGame(id:$id){
+                    id,title
+                }
+            }
+        
+        */
+       ,addNewGame(parent,args){
+            const game = {...args.game,id:Math.floor(Math.random() * 10000).toString()}// generate random number b/w o-1000
+            _db.games.push(game);
+            return game
+       }
+    }
 }
 
 // server setup
