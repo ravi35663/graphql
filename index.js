@@ -25,7 +25,48 @@ const resolvers = {
         game(parent,args){
             return _db.games.find(game=> game.id == args.id)
         }
+    },
+    Game:{
+        reviews(parent){ // here parent is the Game schema
+            return _db.reviews.filter(r=> r.game_id === parent.id);
+        }
+        /*
+        query Game($id:ID!){ this query is for the above resolver function
+            game(id: $id) {
+                id,title
+                reviews {
+                    id,content
+                }
+            }
+            }
+        */
+    },
+    Author:{
+        reviews(parent){
+            return _db.reviews.filter(review=> review.author_id === parent.id);
+        }
+    },
+    Review:{
+        author(parent){
+            return _db.authors.find(a=> a.id === parent.author_id);
+        },
+        game(parent){
+            return _db.games.find(g=> g.id === parent.game_id)
+        }
     }
+    /* This query for the review resolver
+    query Review($id:ID!){
+        review(id:$id){
+            id,content
+            author {
+            name
+            },
+            game {
+            title,id
+            }
+        }
+        } 
+    */
 }
 
 // server setup
