@@ -1,3 +1,10 @@
+/
+References:
+    https://www.youtube.com/playlist?list=PL4cUxeGkcC9iK6Qhn-QLcXCXPQUov1U7f
+    https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUxtblNUahcsg0WLxmrK_y
+
+/
+
 // Learning Graphql
 Graphql:
     -> Graphql is a Query language
